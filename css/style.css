@@ -323,41 +323,71 @@ ul {
     align-items: center;
 }
 
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.education .experience-tabs {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.education .tab-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 30px;
+    padding-left: 0;
+}
+
+.education .tab-btn {
+    background: transparent;
+    border: none;
+    border-left: 2px solid #233554;
+    color: var(--text-light);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    font-size: 14px;
     width: 100%;
 }
 
-.education-item {
-    background-color: var(--secondary-color);
-    padding: 30px;
-    border-radius: 4px;
-    transition: var(--transition);
+.education .tab-btn:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
 }
 
-.education-item:hover {
-    transform: translateY(-5px);
+.education .tab-btn.active {
+    color: var(--primary-color);
+    border-left: 2px solid var(--primary-color);
 }
 
-.education-item h3 {
+.education .tab-content {
+    display: none;
+    padding: 10px 0;
+}
+
+.education .tab-content.active {
+    display: block;
+}
+
+.education .tab-content h3 {
     color: var(--text-lighter);
     font-size: 22px;
     margin-bottom: 10px;
 }
 
-.education-item .institution {
+.education .tab-content .institution {
     color: var(--primary-color);
     font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
     font-size: 14px;
     margin-bottom: 5px;
 }
 
-.education-item .date {
+.education .tab-content .date {
     color: var(--text-light);
     font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
     font-size: 14px;
+    margin-bottom: 15px;
 }
 
 /* Experience Section */

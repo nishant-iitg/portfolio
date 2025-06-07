@@ -37,28 +37,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Tab functionality for experience section
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    if (tabButtons.length > 0) {
-        tabButtons[0].classList.add('active');
-        tabContents[0].classList.add('active');
+    // Tab functionality for experience and education sections
+    function setupTabs(sectionClass) {
+        const section = document.querySelector(`.${sectionClass}`);
+        if (!section) return;
         
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-                
-                // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                button.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
+        const tabButtons = section.querySelectorAll('.tab-btn');
+        const tabContents = section.querySelectorAll('.tab-content');
+        
+        if (tabButtons.length > 0) {
+            // Only activate first tab if none are active
+            const activeTab = section.querySelector('.tab-btn.active');
+            if (!activeTab) {
+                tabButtons[0].classList.add('active');
+                tabContents[0].classList.add('active');
+            }
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    const parentSection = button.closest(`.${sectionClass}`);
+                    
+                    // Remove active class from all buttons and contents in this section
+                    parentSection.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    parentSection.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
             });
-        });
+        }
     }
+    
+    // Initialize tabs for both sections
+    setupTabs('experience');
+    setupTabs('education');
 
     // Add animation on scroll
     const animateOnScroll = () => {
