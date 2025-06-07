@@ -184,6 +184,28 @@ ul {
     margin: 0 0 20px;
     color: var(--text-lighter);
     line-height: 1.1;
+    min-height: 96px; /* Height of one line of text */
+    display: flex;
+    align-items: center;
+}
+
+#typed-name {
+    display: inline-block;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: #ffffff; /* White cursor */
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    height: 1em;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .tagline {
